@@ -1,3 +1,5 @@
+// controllerWrapper используется как аналог try/catch
+
 const controllerWrapper = (controller) => {
   const func = async (req, res, next) => {
     try {

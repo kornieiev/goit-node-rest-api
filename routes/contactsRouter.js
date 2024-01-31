@@ -1,5 +1,7 @@
 const express = require("express");
 
+const { isValidId } = require("../middlewares");
+
 const {
   getAllContacts,
   getContactById,
@@ -15,8 +17,7 @@ const {
   favoriteSchema,
 } = require("../schemas/contactsSchemas");
 
-const validateBody = require("../helpers/validateBody");
-const isValidId = require("../middlewares");
+const { validateBody } = require("../helpers/");
 
 const contactsRouter = express.Router();
 
@@ -24,7 +25,7 @@ contactsRouter.get("/", getAllContacts);
 
 contactsRouter.get("/:id", isValidId, getContactById);
 
-contactsRouter.delete("/:id", deleteContactById);
+contactsRouter.delete("/:id", isValidId, deleteContactById);
 
 contactsRouter.post("/", validateBody(createContactSchema), createContact);
 

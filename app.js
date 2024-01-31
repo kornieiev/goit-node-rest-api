@@ -18,7 +18,7 @@ const contactsRouter = require("./routes/contactsRouter"); // пути для о
 
 const app = express(); // создание веб-сервера
 
-app.use(morgan("dev")); // 'combined', 'common', 'short', 'tiny', 'dev'
+app.use(morgan("tiny")); // 'combined', 'common', 'short', 'tiny', 'dev'
 app.use(cors());
 app.use(express.json());
 

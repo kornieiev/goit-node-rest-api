@@ -35,5 +35,6 @@ contactSchema.post("save", handleMongooseError);
 const Contact = model("contact", contactSchema); // создание модели: Имя модели - существительное в единичной форме.
 // В model передаем(имя коллекции в единичной форме, mongoose добавит множественное число сам)
 // вторым аргументом передается схема, в соответствии к которой будет создаваться модель
+// "contact" - название коллекции. contactSchema - название Mongoose схемы
 
 module.exports = Contact; // экспортируем класс для работы в controllers.

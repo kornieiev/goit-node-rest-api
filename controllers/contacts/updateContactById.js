@@ -8,7 +8,6 @@ const updateContactById = async (req, res, next) => {
     new: true, // new: true - команда MongoDB вернуть объект после изменения
   });
   if (!result) {
-    console.log("HttpError:", HttpError);
     throw HttpError(404);
   }
   res.status(200).json(result);
