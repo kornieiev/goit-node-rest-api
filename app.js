@@ -14,7 +14,8 @@ const {
 
 const DB_HOST_NEW = `mongodb+srv://${DB_ADMIN_NAME}:${DB_ADMIN_PASSWORD}@${DB_CLUSTER_NAME}.mongodb.net/${DB_COLLECTION}`; // адрес для подключения к БД
 
-const contactsRouter = require("./routes/contactsRouter"); // пути для отправления запросов и методы их обработки для работы с БД
+const contactsRouter = require("./routes/api/contactsRouter"); // пути для отправления запросов и методы их обработки для работы с БД
+const usersRoutes = require("./routes/api/usersRoutes");
 
 const app = express(); // создание веб-сервера
 
@@ -23,6 +24,8 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/contacts", contactsRouter);
+app.use("/users", usersRoutes);
+// app.use("/api/auth", authRouter);
 
 app.use((_, res) => {
   res.status(404).json({ message: "Route not found" });
