@@ -7,6 +7,7 @@ const {
   loginUser,
   logoutUser,
   currentUser,
+  updateSubscription,
 } = require("../../controllers/auth");
 
 const {
@@ -14,6 +15,7 @@ const {
   loginUserSchema,
   logoutUserSchema,
   currentUserSchema,
+  subscribeUserSchema,
 } = require("../../schemas/usersSchemas");
 
 const { validateBody } = require("../../helpers");
@@ -28,11 +30,20 @@ usersRouter.post(
   // validateBody(logoutUserSchema),
   logoutUser
 );
+
 usersRouter.get(
   "/current",
   isValidToken,
   validateBody(currentUserSchema),
   currentUser
 );
+
+validateBody(currentUserSchema),
+  usersRouter.patch(
+    "/",
+    isValidToken,
+    validateBody(subscribeUserSchema),
+    updateSubscription
+  );
 
 module.exports = usersRouter;

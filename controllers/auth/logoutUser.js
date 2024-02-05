@@ -9,7 +9,6 @@ const logoutUser = async (req, res, next) => {
 
   const { id } = jwt.verify(token, JWT_SECRET);
   console.log("token - logoutUser", token);
-  // console.log("res.user.token - logoutUser", res);
   if (token || token !== "") {
     console.log("token - logoutUser", token);
 

@@ -33,8 +33,6 @@ const isValidToken = async (req, res, next) => {
     }
     throw error;
   }
-
-  // next();
 };
 
 module.exports = { isValidToken: controllerWrapper(isValidToken) };

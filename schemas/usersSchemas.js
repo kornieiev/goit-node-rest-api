@@ -8,19 +8,17 @@ const registerUserSchema = Joi.object({
 const loginUserSchema = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string().required(),
-  // subscription: Joi.string().required(),
 });
 
-const logoutUserSchema = Joi.object({
-  // email: Joi.string().email().required(),
-  // password: Joi.string().required(),
-  // token: Joi.string().required(),
-});
+const logoutUserSchema = Joi.object({});
 
 const currentUserSchema = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string().required(),
-  // token: Joi.string().required(),
+});
+
+const subscribeUserSchema = Joi.object({
+  subscription: Joi.string().valid("starter", "pro", "business").required(),
 });
 
 module.exports = {
@@ -28,4 +26,5 @@ module.exports = {
   loginUserSchema,
   logoutUserSchema,
   currentUserSchema,
+  subscribeUserSchema,
 };
