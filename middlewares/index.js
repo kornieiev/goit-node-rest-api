@@ -1,7 +1,7 @@
 const isValidId = require("./isValidId");
-const { isValidToken } = require("./isValidToken");
+const { validToken } = require("./validToken");
 
 module.exports = {
   isValidId,
-  isValidToken,
+  validToken,
 };

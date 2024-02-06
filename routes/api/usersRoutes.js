@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { isValidToken } = require("../../middlewares");
+const { validToken } = require("../../middlewares");
 
 const {
   registerUser,
@@ -26,14 +26,14 @@ usersRouter.post("/register", validateBody(registerUserSchema), registerUser);
 usersRouter.post("/login", validateBody(loginUserSchema), loginUser);
 usersRouter.post(
   "/logout",
-  isValidToken,
+  validToken,
   // validateBody(logoutUserSchema),
   logoutUser
 );
 
 usersRouter.get(
   "/current",
-  isValidToken,
+  validToken,
   validateBody(currentUserSchema),
   currentUser
 );
@@ -41,7 +41,7 @@ usersRouter.get(
 validateBody(currentUserSchema),
   usersRouter.patch(
     "/",
-    isValidToken,
+    validToken,
     validateBody(subscribeUserSchema),
     updateSubscription
   );
