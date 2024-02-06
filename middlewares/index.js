@@ -1,7 +1,7 @@
 const isValidId = require("./isValidId");
-const { validToken } = require("./validToken");
+const { tokenValidator } = require("./tokenValidator");
 
 module.exports = {
   isValidId,
-  validToken,
+  tokenValidator,
 };

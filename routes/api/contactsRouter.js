@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { isValidId, validToken } = require("../../middlewares");
+const { isValidId, tokenValidator } = require("../../middlewares");
 
 const {
   getAllContacts,
@@ -21,22 +21,22 @@ const { validateBody } = require("../../helpers");
 
 const contactsRouter = express.Router();
 
-contactsRouter.get("/", validToken, getAllContacts);
+contactsRouter.get("/", tokenValidator, getAllContacts);
 
-contactsRouter.get("/:id", validToken, isValidId, getContactById);
+contactsRouter.get("/:id", tokenValidator, isValidId, getContactById);
 
-contactsRouter.delete("/:id", validToken, isValidId, deleteContactById);
+contactsRouter.delete("/:id", tokenValidator, isValidId, deleteContactById);
 
 contactsRouter.post(
   "/",
-  validToken,
+  tokenValidator,
   validateBody(createContactSchema),
   createContact
 );
 
 contactsRouter.put(
   "/:id",
-  validToken,
+  tokenValidator,
   isValidId,
   validateBody(updateContactSchema),
   updateContactById
@@ -44,7 +44,7 @@ contactsRouter.put(
 
 contactsRouter.patch(
   "/:id/favorite",
-  validToken,
+  tokenValidator,
   isValidId,
   validateBody(favoriteSchema),
   updateStatusContact
