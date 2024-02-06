@@ -4,7 +4,7 @@ const { JWT_SECRET } = process.env;
 const User = require("../models/user");
 const { controllerWrapper } = require("../helpers");
 
-const validToken = async (req, res, next) => {
+const tokenValidator = async (req, res, next) => {
   const authHeader = req.headers.authorization || " ";
 
   const [type, token] = authHeader.split(" ");
@@ -35,4 +35,4 @@ const validToken = async (req, res, next) => {
   }
 };
 
-module.exports = { validToken: controllerWrapper(validToken) };
+module.exports = { tokenValidator: controllerWrapper(tokenValidator) };
