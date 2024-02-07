@@ -1,7 +1,9 @@
 const isValidId = require("./isValidId");
-const { tokenValidator } = require("./tokenValidator");
+const { authenticate } = require("./authenticate");
+const upload = require("./upload");
 
 module.exports = {
   isValidId,
-  tokenValidator,
+  authenticate,
+  upload,
 };

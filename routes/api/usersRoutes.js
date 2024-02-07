@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { tokenValidator } = require("../../middlewares");
+const { authenticate, upload } = require("../../middlewares");
 
 const {
   registerUser,
@@ -8,6 +8,7 @@ const {
   logoutUser,
   currentUser,
   updateSubscription,
+  updateAvatar,
 } = require("../../controllers/auth");
 
 const {
@@ -24,26 +25,28 @@ const usersRouter = express.Router();
 
 usersRouter.post("/register", validateBody(registerUserSchema), registerUser);
 usersRouter.post("/login", validateBody(loginUserSchema), loginUser);
-usersRouter.post(
-  "/logout",
-  tokenValidator,
-  // validateBody(logoutUserSchema),
-  logoutUser
-);
+usersRouter.post("/logout", authenticate, logoutUser);
 
 usersRouter.get(
   "/current",
-  tokenValidator,
+  authenticate,
   validateBody(currentUserSchema),
   currentUser
 );
 
-validateBody(currentUserSchema),
-  usersRouter.patch(
-    "/",
-    tokenValidator,
-    validateBody(subscribeUserSchema),
-    updateSubscription
-  );
+// validateBody(currentUserSchema),
+usersRouter.patch(
+  "/",
+  authenticate,
+  validateBody(subscribeUserSchema),
+  updateSubscription
+);
+
+usersRouter.patch(
+  "/avatars",
+  authenticate,
+  upload.single("avatar"),
+  updateAvatar
+);
 
 module.exports = usersRouter;
