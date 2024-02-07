@@ -5,6 +5,7 @@ const loginUser = require("./loginUser");
 const logoutUser = require("./logoutUser");
 const currentUser = require("./currentUser");
 const updateSubscription = require("./updateSubscription.js");
+const updateAvatar = require("./updateAvatar.js");
 
 updateSubscription;
 
@@ -14,4 +15,5 @@ module.exports = {
   logoutUser: controllerWrapper(logoutUser),
   currentUser: controllerWrapper(currentUser),
   updateSubscription: controllerWrapper(updateSubscription),
+  updateAvatar: controllerWrapper(updateAvatar),
 };
