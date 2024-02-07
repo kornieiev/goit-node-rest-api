@@ -12,7 +12,8 @@ const changeImageSize = (tempUpload) => {
       HttpError(400, "Jimp read error");
     }
 
-    image.resize(200, 200).greyscale();
+    image.resize(250, 250);
+    // .greyscale();
 
     image.write(route, (error) => {
       if (error) {
