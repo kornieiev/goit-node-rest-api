@@ -3,6 +3,7 @@ const morgan = require("morgan"); // для логирования HTTP-запр
 const cors = require("cors"); // позволяет браузеру разрешать кросс-доменные запросы
 const mongoose = require("mongoose"); // создает подключение к базе данных MongoDB
 require("dotenv").config(); // ищет в проекте файл .env и читает из него указанные в нем КЛЮЧ=значение
+require("colors");
 
 const {
   DB_ADMIN_NAME,
@@ -38,10 +39,12 @@ app.use((err, req, res, next) => {
 
 mongoose //
   .connect(DB_HOST_NEW)
-  .then(() => console.log("Database connection successful"))
+  .then(() => console.log("Database connection successful".bold.italic.yellow))
   .then(() =>
     app.listen(PORT, () =>
-      console.log(`Server is running. Use this API on port: ${PORT}`)
+      console.log(
+        `Server is running. Use this API on port: ${PORT}`.bold.italic.yellow
+      )
     )
   )
   .catch((err) => {

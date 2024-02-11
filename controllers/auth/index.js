@@ -7,7 +7,7 @@ const currentUser = require("./currentUser");
 const updateSubscription = require("./updateSubscription.js");
 const updateAvatar = require("./updateAvatar.js");
 
-updateSubscription;
+// updateSubscription;
 
 module.exports = {
   registerUser: controllerWrapper(registerUser),
