@@ -1,6 +1,7 @@
 const { HttpError } = require("../helpers");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = process.env;
+
 const User = require("../models/user");
 const { controllerWrapper } = require("../helpers");
 
