@@ -9,6 +9,7 @@ const {
   currentUser,
   updateSubscription,
   updateAvatar,
+  verifyEmail,
 } = require("../../controllers/auth");
 
 const {
@@ -24,7 +25,11 @@ const { validateBody } = require("../../helpers");
 const usersRouter = express.Router();
 
 usersRouter.post("/register", validateBody(registerUserSchema), registerUser);
+
+usersRouter.get("/verify/:verificationToken", verifyEmail);
+
 usersRouter.post("/login", validateBody(loginUserSchema), loginUser);
+
 usersRouter.post("/logout", authenticate, logoutUser);
 
 usersRouter.get(
