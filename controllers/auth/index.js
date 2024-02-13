@@ -6,8 +6,7 @@ const logoutUser = require("./logoutUser");
 const currentUser = require("./currentUser");
 const updateSubscription = require("./updateSubscription.js");
 const updateAvatar = require("./updateAvatar.js");
-
-// updateSubscription;
+const verifyEmail = require("./verifyEmail.js");
 
 module.exports = {
   registerUser: controllerWrapper(registerUser),
@@ -16,4 +15,5 @@ module.exports = {
   currentUser: controllerWrapper(currentUser),
   updateSubscription: controllerWrapper(updateSubscription),
   updateAvatar: controllerWrapper(updateAvatar),
+  verifyEmail: controllerWrapper(verifyEmail),
 };

@@ -26,6 +26,16 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    verify: {
+      // це поле визначає чи підтвердила людина e-mail
+      type: Boolean,
+      default: false,
+    },
+    verificationToken: {
+      // це поле для запису і порівняння коду підтвердження відправленого на e-mail при реєстрації
+      type: String,
+      required: [true, "Verify token is required"],
+    },
   },
   {
     versionKey: false,
