@@ -3,7 +3,6 @@ const { User } = require("../../models");
 
 const verifyEmail = async (req, res, next) => {
   const { verificationToken } = req.params;
-  console.log("verificationToken", verificationToken);
   const user = await User.findOne({ verificationToken });
   if (!user) {
     throw HttpError(401, "User not found");

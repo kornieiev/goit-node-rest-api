@@ -7,6 +7,7 @@ const currentUser = require("./currentUser");
 const updateSubscription = require("./updateSubscription.js");
 const updateAvatar = require("./updateAvatar.js");
 const verifyEmail = require("./verifyEmail.js");
+const reVerification = require("./reVerification.js");
 
 module.exports = {
   registerUser: controllerWrapper(registerUser),
@@ -16,4 +17,5 @@ module.exports = {
   updateSubscription: controllerWrapper(updateSubscription),
   updateAvatar: controllerWrapper(updateAvatar),
   verifyEmail: controllerWrapper(verifyEmail),
+  reVerification: controllerWrapper(reVerification),
 };

@@ -10,12 +10,13 @@ const {
   updateSubscription,
   updateAvatar,
   verifyEmail,
+  reVerification,
 } = require("../../controllers/auth");
 
 const {
   registerUserSchema,
   loginUserSchema,
-  logoutUserSchema,
+  reVerificationSchema,
   currentUserSchema,
   subscribeUserSchema,
 } = require("../../schemas/usersSchemas");
@@ -24,14 +25,22 @@ const { validateBody } = require("../../helpers");
 
 const usersRouter = express.Router();
 
+// Registration
 usersRouter.post("/register", validateBody(registerUserSchema), registerUser);
 
+// Verification
 usersRouter.get("/verify/:verificationToken", verifyEmail);
 
+// Re-Verification
+usersRouter.post("/verify", validateBody(reVerificationSchema), reVerification);
+
+// Sign-in
 usersRouter.post("/login", validateBody(loginUserSchema), loginUser);
 
+// Sign-out
 usersRouter.post("/logout", authenticate, logoutUser);
 
+// Checking current user
 usersRouter.get(
   "/current",
   authenticate,
@@ -39,7 +48,7 @@ usersRouter.get(
   currentUser
 );
 
-// validateBody(currentUserSchema),
+//  Updating subscription
 usersRouter.patch(
   "/",
   authenticate,
@@ -47,6 +56,7 @@ usersRouter.patch(
   updateSubscription
 );
 
+//  Updating Avatar
 usersRouter.patch(
   "/avatars",
   authenticate,
