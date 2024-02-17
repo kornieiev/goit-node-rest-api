@@ -8,30 +8,19 @@ const reVerification = async (req, res, next) => {
   console.log("user in reVerification:", user);
 
   if (!user) {
-    throw HttpError(401, "User not found");
+    throw HttpError(400, "missing required field email");
   }
   if (user.verify) {
-    throw HttpError(401, "Email already verify");
+    throw HttpError(400, "Verification has already been passed");
   }
 
   try {
-    // user.verify = true;
-    // user.verificationToken = "";
-
-    // console.log("user after reVerification:", user);
-
-    // await user.save();
-
-    await User.findByIdAndUpdate(user._id, {
-      verify: true,
-      verificationToken: "",
-    });
-
     nodemailerFn(user.verificationToken, email);
 
-    res.status(201).json({
-      email,
-      [user.verificationToken]: [user.verificationToken],
+    res.status(200).json({
+      message: "Verification email sent",
+      // email,
+      // [user.verificationToken]: [user.verificationToken],
     });
   } catch (error) {
     if (error.message.includes("E11000") || error.message.code === 11000) {
