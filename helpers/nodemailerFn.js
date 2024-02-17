@@ -1,16 +1,15 @@
 const nodemailer = require("nodemailer");
 const emailContentMaker = require("./emailContentMaker");
-// require("dotenv").config();
 
-const { EMAIL_SENDER_2, MAIL_PASSWORD_2 } = process.env;
+const { EMAIL_SENDER_1, MAIL_PASSWORD_1 } = process.env;
 
 const config = {
   host: "smtp.meta.ua",
   port: 465,
   secure: true,
   auth: {
-    user: EMAIL_SENDER_2,
-    pass: MAIL_PASSWORD_2,
+    user: EMAIL_SENDER_1,
+    pass: MAIL_PASSWORD_1,
   },
 };
 
@@ -18,9 +17,9 @@ const nodemailerFn = (verificationCode, email) => {
   const transporter = nodemailer.createTransport(config);
 
   const emailOptions = {
-    from: EMAIL_SENDER_2,
+    from: EMAIL_SENDER_1,
     to: email,
-    subject: "Nodemailer test",
+    subject: "test",
     html: emailContentMaker(verificationCode),
   };
 
