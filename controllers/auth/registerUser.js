@@ -1,6 +1,6 @@
 const { User } = require("../../models");
 const { HttpError, nodemailerFn } = require("../../helpers");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const gravatar = require("gravatar");
 const { nanoid } = require("nanoid");
 
